@@ -1,0 +1,85 @@
+html{
+    font-size: 62.5%;
+}
+
+body{
+    background-color: #f7f7f7;
+}
+
+#control_panel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 25vh;
+    padding: 1.5rem;
+}
+
+#timer{
+    align-self: center;
+    justify-self: center;
+}
+#timer span {
+    vertical-align: middle;
+    font-family: "Consolas", monospace;
+    font-size: 12rem;
+    color: #030303;
+
+}
+
+#wrap_btn_play_conf,
+#wrap_btn_time_conf {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    justify-content: center;
+}
+.btn{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    border: solid 1px;
+    border-radius: 25vh;
+    border-color: rgba(3, 3, 3, 0.3);
+    background-color: #ffffff;
+    padding: 0.5rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(3, 3, 3, 0.05);
+    letter-spacing: 0.1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.btn:hover {
+    background-color: rgba(3, 3, 3, 0.05);
+    border-color: rgba(3, 3, 3, 0.08);
+    box-shadow: 0 4px 10px rgba(3, 3, 3, 0.15);
+}
+.btn_text{
+    display: inline-flex;
+    color: #030303;
+    align-self: center;
+    font-family: "LINE Seed JP", "Noto Sans JP", sans-serif;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+.icon {
+    display: inline-block;
+    align-self: center;
+    padding-right: 0.25rem;
+    width: 2.5rem;
+    height: auto;
+}
+.icon img {
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+#time_block{
+    width: 100%;
+    height: 72.5vh;
+}
