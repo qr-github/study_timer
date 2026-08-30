@@ -61,4 +61,8 @@ time_conf_btn.addEventListener('click', (e) => {
     console.log(totalSeconds); //デバッグ用
 })
 
+rf_btn.addEventListener('click', (e) => {
+    
+})
+
 
