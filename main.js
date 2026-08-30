@@ -7,11 +7,11 @@ const add_15_min = document.getElementById('min_15');
 const add_20_min = document.getElementById('min_20');
 const add_25_min = document.getElementById('min_25');
 const add_30_min = document.getElementById('min_30');
-const time_conf_btn = document.getElementById('time_conf');
+const time_conf_btn = document.getElementById('wrap_btn_time_conf');
 
 //スタート，リセットボタン
-const st_btn = getElementById('start_btn');
-const rf_btn = getElementById('refresh_btn');
+const st_btn = document.getElementById('start_btn');
+const rf_btn = document.getElementById('refresh_btn');
 
 //時間表示部分
 const ten_min = document.getElementById('ten_min');
@@ -45,7 +45,7 @@ function change_display(rank_num, target_rank){
 
 //実処理部分
 time_conf_btn.addEventListener('click', (e) => {
-    const clicked_btn = e.target;
+    const clicked_btn = e.target.closest('button');
     const conf_num = Number(clicked_btn.dataset.sec);
     const min_sec = convert(time_config(conf_num));
 
@@ -58,6 +58,7 @@ time_conf_btn.addEventListener('click', (e) => {
         change_display(rank.ten_place, item.ten_p);
         change_display(rank.one_place, item.one_p);
     });
+    console.log(totalSeconds); //デバッグ用
 })
 
 
