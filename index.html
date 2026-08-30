@@ -15,19 +15,19 @@
     <body>
         <div id="control_panel">
             <div id="timer">
-                <span class="num">0</span><span class="num">0</span><span class="num">:</span><span class="num">0</span><span class="num">0</span>
+                <span id="ten_min" class="num">0</span><span id="one_min" class="num">0</span><span class="num">:</span><span id="ten_sec" class="num">0</span><span id="one_sec" class="num">0</span>
             </div>
             <div id="wrap_btn_play_conf">
                 <button type="button" id="start_btn" class="btn"><div class="icon"><img src="icons/play_arrow.svg"></div><span class="btn_text">START</span></button>
                 <button type="button" id="refresh_btn" class="btn"><div class="icon"><img src="icons/refresh.svg"></div><span class="btn_text">RESET</span></button>
             </div>
             <div id="wrap_btn_time_conf">
-                <button type="button" id="min_5" class="btn time_conf"><span class="btn_text">+5分</span></button>
-                <button type="button" id="min_10" class="btn time_conf"><span class="btn_text">+10分</span></button>
-                <button type="button" id="min_15" class="btn time_conf"><span class="btn_text">+15分</span></button>
-                <button type="button" id="min_20" class="btn time_conf"><span class="btn_text">+20分</span></button>
-                <button type="button" id="min_25" class="btn time_conf"><span class="btn_text">+25分</span></button>
-                <button type="button" id="min_30" class="btn time_conf"><span class="btn_text">+30分</span></button>
+                <button type="button" id="min_5" data-sec="300" class="btn time_conf"><span class="btn_text">+5分</span></button>
+                <button type="button" id="min_10" data-sec="600" class="btn time_conf"><span class="btn_text">+10分</span></button>
+                <button type="button" id="min_15" data-sec="900" class="btn time_conf"><span class="btn_text">+15分</span></button>
+                <button type="button" id="min_20" data-sec="1200" class="btn time_conf"><span class="btn_text">+20分</span></button>
+                <button type="button" id="min_25" data-sec="1500" class="btn time_conf"><span class="btn_text">+25分</span></button>
+                <button type="button" id="min_30" data-sec="1800" class="btn time_conf"><span class="btn_text">+30分</span></button>
             </div>
         </div>
         <div id="time_block"></div>
