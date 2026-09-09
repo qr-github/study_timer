@@ -93,7 +93,7 @@ st_btn.addEventListener('click', () => {
                         clearInterval(timer);
                         timer = null;
                         rf_display();
-                        console.log("設定時間経過：0で止めます");
+                        console.log("設定時間経過：0で止めます"); //デバッグ用
                     }
                 }, 1000);
     }else if(!(timer == null)){
