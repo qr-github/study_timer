@@ -18,7 +18,10 @@ const ten_min = document.getElementById('ten_min');
 const one_min = document.getElementById('one_min');
 const ten_sec = document.getElementById('ten_sec');
 const one_sec = document.getElementById('one_sec');
-
+ranks =[
+    {ten_p: ten_min, one_p: one_min},
+    {ten_p: ten_sec, one_p: one_sec}
+]
 
 //===ロジック部分===
 function time_config(seconds){
@@ -43,12 +46,7 @@ function change_display(rank_num, target_rank){
     target_rank.innerText = num_str;
 }
 
-//実処理部分
-time_conf_btn.addEventListener('click', (e) => {
-    const clicked_btn = e.target.closest('button');
-    const conf_num = Number(clicked_btn.dataset.sec);
-    const min_sec = convert(time_config(conf_num));
-
+function update_display(min_sec){
     targets = [
         {value: min_sec.min, ten_p: ten_min, one_p: one_min},
         {value: min_sec.sec, ten_p: ten_sec, one_p: one_sec}
@@ -58,11 +56,54 @@ time_conf_btn.addEventListener('click', (e) => {
         change_display(rank.ten_place, item.ten_p);
         change_display(rank.one_place, item.one_p);
     });
+}
+
+function rf_display(){
+    totalSeconds = 0;
+    ranks.forEach(item =>{
+        change_display(0, item.ten_p);
+        change_display(0, item.one_p);
+    });
+}
+
+//実処理部分
+time_conf_btn.addEventListener('click', (e) => {
+    const clicked_btn = e.target.closest('button');
+    const conf_num = Number(clicked_btn.dataset.sec);
+    const min_sec = convert(time_config(conf_num));
+
+    update_display(min_sec);
     console.log(totalSeconds); //デバッグ用
 })
 
-rf_btn.addEventListener('click', (e) => {
-    
+rf_btn.addEventListener('click', () => {
+    rf_display();
+    console.log(totalSeconds); //デバッグ用
+})
+
+let timer = null;
+st_btn.addEventListener('click', () => {
+    if(totalSeconds != 0 && timer == null){
+        timer = setInterval(() => {
+                    if(totalSeconds != 0 && !(totalSeconds < 0) ){
+                        totalSeconds--;
+                        const min_sec = convert(totalSeconds);
+                        update_display(min_sec);
+                    }else{
+                        clearInterval(timer);
+                        timer = null;
+                        rf_display();
+                        console.log("設定時間経過：0で止めます");
+                    }
+                }, 1000);
+    }else if(!(timer == null)){
+        clearInterval(timer);
+        timer = null;
+    }else{
+        clearInterval(timer);
+        timer = null;
+        rf_display();
+    }
 })
 
 
