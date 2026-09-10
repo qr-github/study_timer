@@ -23,6 +23,9 @@ ranks =[
     {ten_p: ten_sec, one_p: one_sec}
 ]
 
+//src
+const img_icon = document.getElementById('st_icon');
+
 //===ロジック部分===
 function time_config(seconds){
     totalSeconds += seconds;
@@ -66,6 +69,11 @@ function rf_display(){
     });
 }
 
+function btn_icon_change(icon_src, btn_element, text){
+    img_icon.src = icon_src;
+    btn_element.querySelector(".btn_text").innerText = text;
+}
+
 //実処理部分
 time_conf_btn.addEventListener('click', (e) => {
     const clicked_btn = e.target.closest('button');
@@ -84,6 +92,7 @@ rf_btn.addEventListener('click', () => {
 let timer = null;
 st_btn.addEventListener('click', () => {
     if(totalSeconds != 0 && timer == null){ //スタート
+        btn_icon_change("icons/play_pause.svg", st_btn, "PAUSE");
         timer = setInterval(() => {
                     if(totalSeconds != 0 && !(totalSeconds < 0) ){
                         totalSeconds--;
@@ -99,6 +108,7 @@ st_btn.addEventListener('click', () => {
     }else if(!(timer == null)){ //一時停止
         clearInterval(timer);
         timer = null;
+        btn_icon_change("icons/play_arrow.svg", st_btn, "START");
     }else{ //無設定時の誤スタート防止処理
         clearInterval(timer);
         timer = null;
