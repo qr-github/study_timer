@@ -83,7 +83,7 @@ rf_btn.addEventListener('click', () => {
 
 let timer = null;
 st_btn.addEventListener('click', () => {
-    if(totalSeconds != 0 && timer == null){
+    if(totalSeconds != 0 && timer == null){ //スタート
         timer = setInterval(() => {
                     if(totalSeconds != 0 && !(totalSeconds < 0) ){
                         totalSeconds--;
@@ -96,10 +96,10 @@ st_btn.addEventListener('click', () => {
                         console.log("設定時間経過：0で止めます"); //デバッグ用
                     }
                 }, 1000);
-    }else if(!(timer == null)){
+    }else if(!(timer == null)){ //一時停止
         clearInterval(timer);
         timer = null;
-    }else{
+    }else{ //無設定時の誤スタート防止処理
         clearInterval(timer);
         timer = null;
         rf_display();
