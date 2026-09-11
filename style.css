@@ -6,6 +6,7 @@ body {
     background-color: #f7f7f7;
 }
 
+/*全体*/
 #control_panel {
     display: flex;
     flex-direction: column;
@@ -14,6 +15,7 @@ body {
     padding: 1.5rem;
 }
 
+/*timer*/
 #timer{
     align-self: center;
     justify-self: center;
@@ -26,12 +28,20 @@ body {
 
 }
 
-#wrap_btn_play_conf,
+/*button*/
+#wrap_btn_play_conf {
+    margin-top: 1.5rem;
+    margin-left: 17rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 #wrap_btn_time_conf {
     margin-top: 1.5rem;
     display: flex;
     flex-direction: row;
-    vertical-align: middle;
+    align-items: center;
     justify-content: center;
 }
 .btn {
@@ -64,21 +74,44 @@ body {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
 }
-.icon {
+.btn_icon {
     display: inline-block;
     align-self: center;
     padding-right: 0.25rem;
     width: 2.5rem;
     height: auto;
 }
-.icon img {
+.btn_icon img {
     vertical-align: middle;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/*sound*/
+#sound_conf.sound_clickable_area {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgba(3, 3, 3, 0.5);
+    padding-bottom: 0.2rem;
+    cursor: pointer;
+    user-select: none;
+    min-width: 17rem;
+}
+.sound_name {
+    color: #030303;
+    font-family: "LINE Seed JP", "Noto Sans JP", sans-serif;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+.sound_icon {
+    width: 2.5rem;
+    height: auto;
+    display: inline-block;
+}
 
+/*タイムブロック*/
 #time_block {
     width: 100%;
     height: 72.5vh;

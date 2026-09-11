@@ -23,8 +23,33 @@ ranks =[
     {ten_p: ten_sec, one_p: one_sec}
 ]
 
-//src
+//icon
 const img_icon = document.getElementById('st_icon');
+
+//audio_config
+const sounds_conf_area = document.getElementById('sound_conf');
+const sound_name = document.getElementById('sound_name_text');
+let currentIndex = 0; //初期値
+
+//audio
+const alarm_audio = new Audio('/sounds/rain.mp3');
+const shiningStar = new Audio('/sounds/shining_star.mp3');
+let audioList = [
+    {audio: alarm_audio, name: "雨"},
+    {audio: shiningStar, name: "シャイニングスター"}
+]
+alarm_audio.loop = true;
+alarm_audio.volume = 0.5;
+shiningStar.loop = true;
+shiningStar.volume = 0.5;
+let currentAudio = audioList[currentIndex]; //初期値
+let is_playing = currentAudio.audio; //初期値
+
+
+
+//flag
+let sound_play = false;
+let is_audio_active = false;
 
 //===ロジック部分===
 function time_config(seconds){
@@ -74,6 +99,24 @@ function btn_icon_change(icon_src, btn_element, text){
     btn_element.querySelector(".btn_text").innerText = text;
 }
 
+function sound_play_conf(select_sound, flag_sound_play){
+    sound_play = flag_sound_play;
+    if(sound_play){
+        select_sound.play();
+    }else{
+        select_sound.pause();
+        select_sound.currentTime = 0;
+    }
+}
+
+function sound_play_sys(){
+    currentIndex = currentIndex + 1;
+    currentIndex = currentIndex % audioList.length;
+    currentAudio = audioList[currentIndex];
+    is_playing = currentAudio.audio;
+    sound_name.innerText = currentAudio.name;
+}
+
 //実処理部分
 time_conf_btn.addEventListener('click', (e) => {
     const clicked_btn = e.target.closest('button');
@@ -86,6 +129,8 @@ time_conf_btn.addEventListener('click', (e) => {
 
 rf_btn.addEventListener('click', () => {
     rf_display();
+    btn_icon_change("icons/play_arrow.svg", st_btn, "START");
+    sound_play_conf(is_playing, false);
     console.log(totalSeconds); //デバッグ用
 })
 
@@ -102,6 +147,8 @@ st_btn.addEventListener('click', () => {
                         clearInterval(timer);
                         timer = null;
                         rf_display();
+                        is_audio_active = true;
+                        sound_play_conf(is_playing, true);
                         console.log("設定時間経過：0で止めます"); //デバッグ用
                     }
                 }, 1000);
@@ -109,11 +156,28 @@ st_btn.addEventListener('click', () => {
         clearInterval(timer);
         timer = null;
         btn_icon_change("icons/play_arrow.svg", st_btn, "START");
+        //console.log("今ここ1");
     }else{ //無設定時の誤スタート防止処理
         clearInterval(timer);
         timer = null;
         rf_display();
+        btn_icon_change("icons/play_arrow.svg", st_btn, "START");
+        is_audio_active = false;
+        sound_play_conf(is_playing, false);
+        //console.log("今ここ2");
     }
 })
+
+sounds_conf_area.addEventListener('click', () => {
+    if(is_audio_active === true){
+        const swap_audio = is_playing;
+        sound_play_conf(swap_audio, false);
+        sound_play_sys();
+        sound_play_conf(is_playing, true);
+    }else{
+        sound_play_sys();
+    }
+})
+
 
 
