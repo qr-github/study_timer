@@ -45,8 +45,6 @@ shiningStar.volume = 0.5;
 let currentAudio = audioList[currentIndex]; //初期値
 let is_playing = currentAudio.audio; //初期値
 
-
-
 //flag
 let sound_play = false;
 let is_audio_active = false;
